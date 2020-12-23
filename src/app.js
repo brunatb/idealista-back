@@ -12,9 +12,9 @@ app.use(express.json());
 
 
 app.post('/tasks', tasksController.postTask);
-//app.get('/tasks', tasksController.getAllTasks);
+app.get('/tasks', tasksController.getAllTasks);
 
-
+app.put('/tasks/:id', tasksController.updateTask);
 
 
 

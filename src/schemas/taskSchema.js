@@ -4,4 +4,12 @@ const testSchema = Joi.object({
     name: Joi.string().required(),
 })
 
-module.exports = testSchema;
+const testUpdateSchema = Joi.object({
+    name: Joi.string(),
+    isChecked: Joi.boolean(),
+})
+
+module.exports = {
+    testSchema,
+    testUpdateSchema
+}
