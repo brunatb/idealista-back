@@ -25,5 +25,14 @@ describe('POST /tasks', () => {
             isChecked: false,
             labels: []
         })
+    });
+
+    it('should return 422 when passed invalid name', async () => {
+        const body = {
+            name: 1
+        }
+
+        const result = await agent.post('/tasks').send(body);
+        expect(result.status).toBe(422);
     })
 })

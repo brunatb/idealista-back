@@ -12,6 +12,7 @@ app.use(express.json());
 
 
 app.post('/tasks', tasksController.postTask);
+//app.get('/tasks', tasksController.getAllTasks);
 
 
 
