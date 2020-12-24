@@ -105,3 +105,21 @@ describe('PUT /tasks/:id', () => {
         await deleteFromDb();
     })
 })
+
+describe('DELETE /tasks/:id', () => {
+    it('should return 200', async () => {
+        const tasks = await insertDb();
+     
+        const result = await agent.delete(`/tasks/${tasks[0][0].id}`);
+
+        expect(result.status).toBe(200);
+    })
+
+    it('should return 404 when id is not found', async () => {
+        const tasks = await insertDb();
+
+        const result = await agent.delete(`/tasks/1`);
+
+        expect(result.status).toBe(404);
+    })
+})

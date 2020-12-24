@@ -46,11 +46,28 @@ async function updateTask(req, res) {
         res.sendStatus(500);
         console.log(err);
     }
-    
+}
+
+async function deleteTask(req, res){
+    const { id } = req.params;
+    try{
+        if(testUpdateSchema.validate(req.body).error) return res.sendStatus(422);
+        const task = await Task.findByPk(id);
+        if(task === null) return res.sendStatus(404);
+
+        task.destroy();
+
+        res.sendStatus(200);
+
+    }catch(err){
+        res.sendStatus(500);
+        console.log(err);
+    }
 }
 
 module.exports = {
     postTask,
     getAllTasks,
     updateTask,
+    deleteTask
 }
